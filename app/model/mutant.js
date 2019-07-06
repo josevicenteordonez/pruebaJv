@@ -13,7 +13,7 @@ mutantModel.isMutant = function (dna) {
       * 0
       * (Se valida que la matriz exista)
     **/
-    if (dna === null && dna === undefined && dna === 'undefined') {
+    if (dna === null || dna === undefined || dna === 'undefined') {
         return false;
     }
 
@@ -23,8 +23,6 @@ mutantModel.isMutant = function (dna) {
     **/
     var x = dna.length;
     var y = dna[0].length;
-    console.log('x', x);
-    console.log('y', y);
 
     if (x != y) {
         // retorno FALSE, ya que no es una matriz valida de NxN
@@ -65,6 +63,10 @@ mutantModel.isMutant = function (dna) {
       * seguidos que forman la cadena de un mutante)
     **/
 
+    // OJOOOOOO
+    // VALIDAR SI EL ADN EXISTE EN LA BD; DE ESA FORMA EVITO EVALUAR UN ADN YA EXISTENTE
+    // Find en la BD con el ADN
+
     if (x < 4) {
 
         var data = {
@@ -80,8 +82,7 @@ mutantModel.isMutant = function (dna) {
         return false;
     }
 
-    // VALIDAR SI EL ADN EXISTE EN LA BD; DE ESA FORMA EVITO EVALUAR UN ADN YA EXISTENTE
-    // Find en la BD con el ADN
+
 
     /**
       * Inicio la evaluación de las cadenas horizontales
@@ -90,26 +91,44 @@ mutantModel.isMutant = function (dna) {
     // FOR validar con Expresion regular las cadenas AAAA , TTTT, CCCC, GGGG dentro de los String
     // si consigo 2 casos horizontales ya es exitoso y mando el 200
 
-    var pattvalidadCharacterA = /[^AAAA]/g;
-    var pattvalidadCharacterT = /[^TTTT]/g;
-    var pattvalidadCharacterC = /[^CCCC]/g;
-    var pattvalidadCharacterG = /[^GGGG]/g;
+    var pattValidateCharacter = ['AAAA', 'TTTT', 'CCCC', 'GGGG'];
 
     for (var i = 0; i < dna.length; i++) {
+        for (var j = 0; j < pattValidateCharacter.length; j++) {
+            if (dna[i].search(pattValidateCharacter[j]) != -1) {
+                validChain++;
+            }
 
-        var validA = pattvalidadCharacterA.test(dna[i]);
-        var validT = pattvalidadCharacterT.test(dna[i]);
-        var validC = pattvalidadCharacterC.test(dna[i]);
-        var validG = pattvalidadCharacterG.test(dna[i]);
-
-        console.log('Cadena: ' + dna[i] + ' Valida A: ' + validA);
-        console.log('Cadena: ' + dna[i] + ' Valida T: ' + validT);
-        console.log('Cadena: ' + dna[i] + ' Valida C: ' + validC);
-        console.log('Cadena: ' + dna[i] + ' Valida G: ' + validG);
-
+            if (validChain == 2) {
+                // guardo en la BD como mutante
+                var data = {
+                    'dna': dna,
+                    'isMutant': true,
+                    'createdAt': new Date()
+                }
+        
+                operations.insert('pruebajv', 'mutant', data).then(function (value) {
+        
+                });
+                // retorno TRUE, ya que la matriz tiene 2 coincidencias de cadenas validas
+                return true;
+            }
+        }
     }
 
-    return true;
+    if(validChain < 2){
+        var data = {
+            'dna': dna,
+            'isMutant': false,
+            'createdAt': new Date()
+        }
+
+        operations.insert('pruebajv', 'mutant', data).then(function (value) {
+
+        });
+        // retorno FALSE, ya que la matriz NO tiene al menos 2 coincidencias de cadenas validas
+        return false;
+    }
 };
 
 module.exports = mutantModel;
