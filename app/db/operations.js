@@ -13,7 +13,6 @@ exports.find = function (dbName, collectionName, query) {
             if (err) {
                 reject(err);
             }
-            console.log("Result", result);
             resolve(result);
         });
     });
@@ -32,7 +31,6 @@ exports.insert = function (dbName, collectionName, query) {
             if (err) {
                 reject(err);
             }
-            console.log("Result", result);
             resolve(result);
         });
     });
@@ -51,7 +49,6 @@ exports.delete = function (dbName, collectionName, query) {
             if (err) {
                 reject(err);
             }
-            console.log("Result", result);
             resolve(result);
         });
     });

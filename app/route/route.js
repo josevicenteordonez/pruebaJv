@@ -1,5 +1,5 @@
-const statsCtrl = require('../controller/stats');
 const mutantCtrl = require('../controller/mutant');
+const statsCtrl = require('../controller/stats');
 
 /**
   * initializationRoutes
@@ -8,10 +8,10 @@ const mutantCtrl = require('../controller/mutant');
 **/
 exports.initializationRoutes = function (app) {
     app.post('/mutant', (req, res, next) => {
-        statsCtrl.find(req, res);
+        mutantCtrl.isMutant(req, res);
     });
 
     app.get('/stats', (req, res, next) => {
-        mutantCtrl.find(req, res);
+        statsCtrl.find(req, res);
     });
 }
