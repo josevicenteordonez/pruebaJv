@@ -6,7 +6,8 @@ var state = {
 };
  
 // String de conexion para la base de datos MongoDB
-const url = "mongodb://localhost:27017";
+//const url = "mongodb://localhost:27017";
+const url = "mongodb+srv://admin:adminJV@clusterjv-qiidx.gcp.mongodb.net/test?retryWrites=true&w=majority";
 
 /**
   * openConnection

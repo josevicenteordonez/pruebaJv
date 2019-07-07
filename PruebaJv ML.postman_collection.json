@@ -1,0 +1,121 @@
+{
+	"info": {
+		"_postman_id": "d798425e-9831-46e4-834d-db934639da30",
+		"name": "PruebaJv ML",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Local",
+			"item": [
+				{
+					"name": "Stats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4200/stats",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4200",
+							"path": [
+								"stats"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mutant",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"dna\": [\n        \"AAGATA\",\n        \"CAGTGA\",\n        \"TTATGA\",\n        \"AGAAGA\",\n        \"CCCCTA\",\n        \"TCACTG\"\n    ]\n}\n"
+						},
+						"url": {
+							"raw": "http://localhost:4200/mutant",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4200",
+							"path": [
+								"mutant"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GCP",
+			"item": [
+				{
+					"name": "Stats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://us-central1-prueba-jv.cloudfunctions.net/prueba-jv-ml/stats",
+							"protocol": "https",
+							"host": [
+								"us-central1-prueba-jv",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"prueba-jv-ml",
+								"stats"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mutant",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"dna\": [\n        \"AAAATA\",\n        \"CAGTGC\",\n        \"TTATGT\",\n        \"AGAAGG\",\n        \"CCCCTA\",\n        \"TCACTG\"\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://us-central1-prueba-jv.cloudfunctions.net/prueba-jv-ml/mutant",
+							"protocol": "https",
+							"host": [
+								"us-central1-prueba-jv",
+								"cloudfunctions",
+								"net"
+							],
+							"path": [
+								"prueba-jv-ml",
+								"mutant"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
