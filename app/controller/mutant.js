@@ -1,6 +1,6 @@
-var mutantModel = require('../model/mutant');
+const mutantModel = require('../model/mutant');
 
-var mutantCtrl = {};
+const mutantCtrl = {};
 
 mutantCtrl.isMutant = async function (req, res) {
 

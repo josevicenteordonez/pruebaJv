@@ -1,6 +1,6 @@
-var statsModel = require('../model/stats');
+const statsModel = require('../model/stats');
 
-var statsCtrl = {};
+const statsCtrl = {};
 
 statsCtrl.stats = async function (req, res) {
 
