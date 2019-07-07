@@ -12,6 +12,6 @@ exports.initializationRoutes = function (app) {
     });
 
     app.get('/stats', (req, res, next) => {
-        statsCtrl.find(req, res);
+        statsCtrl.stats(req, res);
     });
 }
