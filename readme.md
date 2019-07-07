@@ -2,6 +2,16 @@
 
 Before installing, [download and install Node.js](https://nodejs.org/en/download/)
 
+## Requirement
+- node
+- npm
+- mongoDB
+
+
+## Instructions
+- Clone the repository
+- Globally install mocha and istanbul `npm install mocha istanbul -g`
+
 ## Run locally
 
 You will need Node and `npm` installed locally in order to be able to run the app. First, install node dependencies
