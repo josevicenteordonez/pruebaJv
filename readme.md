@@ -18,5 +18,7 @@ $ node index.js
 
 The Express app will now be running on port 4200 and can be accessed on http://localhost:4200. The following endpoints will be accessible:
 
+```bash
 GET http://localhost:4200/stats
 POST http://localhost:4200/mutant
+```
